@@ -6,7 +6,6 @@ function processData(input) {
 }
 
 const strToInt = strings => {
-  console.log(strings)
   return strings.reduce((ints, str) => {
     ints.push(parseInt(str));
     return ints;
