@@ -1,3 +1,5 @@
+// https://www.hackerrank.com/challenges/kangaroo
+
 const doTheyMeet = (k1, k1jumps, k2, k2jumps) => {
     if (k2jumps >= k1jumps) return 'NO';
     
