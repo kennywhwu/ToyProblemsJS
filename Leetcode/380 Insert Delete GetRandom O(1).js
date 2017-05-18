@@ -35,23 +35,21 @@ RandomizedSet.prototype.has = function(val) {
 RandomizedSet.prototype.remove = function(val) {
   if (this.has(val)) {
     let idx = this.positions[val],
-      temp = this.values[idx],
-      lastIdx = this.values.length - 1,
-      last = this.values[lastIdx];
+      lastIdx = this.values.length - 1;
 
-    this.swap(idx, lastIdx, this.values);
-    this.positions[last] = idx;
-    this.values.pop();
-    delete this.positions[temp];
+    this.swapAndPop(idx, lastIdx, this.values);
     return true;
   }
   return false;
 };
 
-RandomizedSet.prototype.swap = function(i, j, arr) {
+RandomizedSet.prototype.swapAndPop = function(i, j, arr) {
   let temp = arr[i];
   arr[i] = arr[j];
   arr[j] = temp;
+  this.positions[arr[i]] = i;
+  arr.pop();
+  delete this.positions[temp];
   return arr;
 }
 
