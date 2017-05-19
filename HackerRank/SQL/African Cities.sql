@@ -1,0 +1,5 @@
+-- https://www.hackerrank.com/challenges/african-cities
+
+SELECT city.name FROM city 
+INNER JOIN country ON city.countrycode = country.code 
+AND continent = 'Africa';
