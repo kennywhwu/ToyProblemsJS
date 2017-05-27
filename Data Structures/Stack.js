@@ -31,7 +31,14 @@ Stack.prototype.contains = function(val) {
   return false;
 };
 
+Stack.prototype.top = function() {
+  return this._storage[this._size - 1];
+}
 
+module.exports = Stack;
+
+/* 
+@ Tests
 var s = new Stack();
 
 s.push(1)
@@ -43,3 +50,4 @@ console.log(s.contains(1)) // true
 console.log(s.contains(6)) // false
 console.log(s.pop()) // 5
 console.log(s.contains(5)) // false
+*/
