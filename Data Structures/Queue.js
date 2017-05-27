@@ -19,10 +19,6 @@ Queue.prototype.dequeue = function() {
   return removed;
 };
 
-Queue.prototype.size = function() {
-  return this._size;
-}
-
 var q = new Queue();
 
 q.enqueue(1)
