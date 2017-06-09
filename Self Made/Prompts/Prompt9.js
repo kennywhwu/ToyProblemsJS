@@ -2,7 +2,7 @@
 // ex. evaluate('5 + 8 * 9') => 77
 // assume equation always valid
 // assume spaces are always included between characters
-// 
+// inputs -9 to 9
 
 // math functions
 const add = (a, b) => parseInt(a) + parseInt(b);

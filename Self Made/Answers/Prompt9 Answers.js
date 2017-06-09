@@ -2,6 +2,7 @@
 // ex. evaluate('5 + 8 * 9') => 77
 // assume equation always valid
 // assume spaces are always included between characters
+// inputs -9 to 9
 
 // math functions
 const add = (a, b) => parseInt(a) + parseInt(b);
@@ -27,7 +28,7 @@ const convertRPN = expression => {
 
   return expression.split('')
     .reduce((rpn, val) => {
-      if (parseFloat(val)) {
+      if (parseFloat(val) || val === '0') {
         rpn.push(val);
       }
 
@@ -56,6 +57,7 @@ const convertRPN = expression => {
 const evaluate = equation => {
   let rpnFormat = convertRPN(equation);
   let stack = [];
+  console.log(rpnFormat)
 
   for (let val of rpnFormat) {
     if (isNumeric(val)) {
@@ -71,5 +73,3 @@ const evaluate = equation => {
 
   return stack.length <= 1 ? stack[0] : 'error processing';
 };
-
-console.log(evaluate('3 + 4 * 5 / (3 + 2)') === eval('3 + 4 * 5 / (3 + 2)'))
