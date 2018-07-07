@@ -1,4 +1,6 @@
-var arrayOfItems = [1, 3, 5, 7, 9, 12, 40];
+
+
+var arrayOfItems = [80,65,68,69,73];
 
 // Pt. 1 - Return an array of all the numbers missing between the start and end of the array.
 // ex: [1, 2, 5, 6] => [3, 4]
@@ -7,7 +9,7 @@ function missingNum (array) {
   //declare empty resultArray for output
   var resultArray = [];
   //run reduce on input array to compare if current value is equal to accumulator + 1
-  array.reduce(function(accumulator, currentValue) {
+  array.sort(sortNum).reduce(function(accumulator, currentValue) {
     for(var i = 1; i < currentValue - accumulator; i++) {   
 
    //if current value does not equal accumulator + 1, then
@@ -23,3 +25,38 @@ function missingNum (array) {
 }
 
 console.log(missingNum(arrayOfItems))
+
+// Pt. 2 - After returning the array, combine the missing numbers array with the original array. When logging arrayOfItems, you should now have one array with all of the numbers from Pt. 1 added in.
+
+var completeArray = arrayOfItems.concat(missingNum (arrayOfItems));
+
+
+
+
+
+
+
+
+function sortNum (num1, num2) {
+  return num1 - num2;
+}
+
+function missingNums(arr) {
+  //sort completeArray
+  completeArray.sort(sortNum);
+  //use reduce on sorted completeArray with empty object as initialValue
+  var resultObj = completeArray.reduce(function(accumulator, currentValue) {
+    //set object key to be character from currentValue in completeArray
+    var key = String.fromCharCode(currentValue);
+    //set object value to be currentValue
+    accumulator[key] = currentValue;
+    //return object 
+    return accumulator;
+  },{}) 
+  //return object
+  return resultObj;
+}
+
+
+console.log(missingNums(arrayOfItems))
+
